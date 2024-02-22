@@ -1,0 +1,84 @@
+<section th:fragment="header" class="homeSec"
+         xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<div class="header" id="myHeader">
+
+		<ul class="headerUl">
+			<li>
+				<div class="homeLogo">
+					<img th:src="@{/img/logo.png}">
+					<p>Account</p>
+				</div>
+				<div class="homeSearch" th:if="${sideNav == null}">
+					<input type="" name="" placeholder="Search Planbow Account">
+					<i class="fa fa-search"></i>
+				</div>
+			</li>
+			
+			<li class="manageAccli">
+				<div class="resSearch">
+					<a class="resSearchIcon" id="show"><i class="fa fa-search"></i></a>
+					<div class="searchDiv">
+						<a id="hide"><img th:src="@{/img/leftarrow.svg}"></a>
+						<input placeholder="Search Planbow Account">
+					</div>
+				</div>
+				<div class="dropdown">
+					<button class="dropdown-toggle" type="button" data-toggle="dropdown"/>
+                  <span>
+					  <img class="userImg" th:if="${#authentication.principal.profilePic != null }" th:src="${#authentication.principal.profilePic}"/>
+					  <img class="userImg" th:if="${#authentication.principal.profilePic == null}" th:src="@{/img/user.png}"/>
+				  </span>
+						<ul class="dropdown-menu dropUl">
+							<li>
+								<div class="dropDiv1">
+									<div class="dropprofile">
+										<img class="" th:if="${#authentication.principal.profilePic != null}" th:src="${#authentication.principal.profilePic}"/>
+										<img class="" th:if="${#authentication.principal.profilePic == null}" th:src="@{/img/user.png}"/>
+									</div>
+									<label sec:authentication="name"></label>
+									<span sec:authentication="principal.email"></span>
+									<a class="manage" th:href="@{/personal-info}">Manage your Planbow Account</a>
+								</div>
+							</li>
+							<li style="display: none">
+								<div class="dropDiv2">
+									<div>
+										<a>
+											<span>G</span>
+											<label sec:authentication="name"></label>
+											<p sec:authentication="principal.email"></p>
+										</a>
+									</div>
+									<div>
+										<a>
+											<img th:src="@{/img/addUser.svg}">
+											<label>Add another account</label>
+										</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<form th:action="@{/logout}" method="post" id="logout">
+									<a href="javascript:void(0)" onclick="document.getElementById('logout').submit();" class="signOut">Sign out </a>
+								</form>
+								
+							</li>
+						</ul>
+				</div>
+			</li>
+		</ul>
+		<div th:if="${sideNav == null}">
+			<div class="sidemenu sidemenutop ">
+				<ul>
+					<li><a th:href="@{/dashboard}" th:classappend="${active == 'dashboard'} ? 'active' : '' ">Home</a></li>
+					<li><a th:href="@{/personal-info}" th:classappend="${active == 'personal-info'} ? 'active' : '' " >Personal Info</a></li>
+					<li><a th:href="@{/security}" th:classappend="${active == 'security'} ? 'active' : '' ">Security</a></li>
+					<li><a th:href="@{/about}" th:classappend="${active == 'about'} ? 'active' : '' ">About</a></li>
+					<li><a th:href="@{/payment}" th:classappend="${active == 'payment'} ? 'active' : '' ">Payment & Subscription</a></li>
+				</ul>
+			</div>
+		</div>
+
+	
+	</div>
+</section>

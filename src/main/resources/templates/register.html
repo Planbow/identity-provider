@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<head th:replace="~{fragment/head}"></head>
+
+<body>
+<section class="accountSec">
+	
+	<!--------Start Login Section-------------->
+	<div class="accountDiv_outer createAcccount" >
+		<img class="leftImg" th:src="@{/img/signupImg.svg}">
+		<img class="rightImg" th:src="@{/img/signupleaf.svg}">
+				<div class="loginDiv">
+					<img class="logoNida" th:src="@{/img/logo.png}">
+					
+					<div class="signInHead">
+						<label>Sign Up</label>
+						<p>Create your Planbow Account</p>
+					</div>
+					
+					<ul class="formUL formCreatUL">
+						<li style="margin-top: 16px">
+							<div>
+								<label>First Name</label>
+								<input autocomplete="off" placeholder="first name" type="text" id="firstName"  name="firstName" >
+								<span class="errorMsg" id="firstNameError" style="display: none">Please provide first name</span>
+							</div>
+						</li>
+						<li style="margin-top: 16px">
+							<div>
+								<label>Last Name</label>
+								<input autocomplete="off" placeholder="last name" type="text" id="lastName" name="lastName">
+								<span class="errorMsg" id="lastNameError" style="display: none">Please provide last name</span>
+							</div>
+						</li>
+						
+						<li style="width: 96% ;margin-top: 16px">
+							<div>
+								<label>Email Address</label>
+								<input autocomplete="off" placeholder="email address" type="text" id="email" name="email">
+								<span class="errorMsg" id="emailError" style="display: none">Please provide email address</span>
+							</div>
+						</li>
+						<li style="margin-top: 16px">
+							<div>
+								<label>Mobile Number</label>
+								<input autocomplete="off" placeholder="Mobile Number" id="contactNo"  type="number"  name="contactNo">
+								<span class="errorMsg" id="contactError" style="display: none">Please provide contact number</span>
+							</div>
+						</li>
+						
+						<li style="margin-top: 16px">
+							<div>
+								<label>Password</label>
+								<input  autocomplete="off" placeholder="security password"   id="password" type="password"  name="password">
+								<span class="errorMsg" id="passwordError" style="display: none">Please provide security password</span>
+							</div>
+						</li>
+					
+					
+					</ul>
+					
+					<ul class="formUL socialUL">
+						<li>
+
+							<div class="errormsg_Div" id="errorDiv" style="display: none">
+								Invalid username and password
+							</div>
+							<div class="successmsg_Div" id="successDiv" style="display: none" >
+								An email confirmation link has been sent to your email <br/> Please verify it
+							</div>
+							<br/><br/>
+						</li>
+						<li>
+							<div class="btmButtonDiv">
+								<button class="cmnButton" onclick="createAccount();"> Create Account</button>
+								<!--<div class="orDiv">
+									<span class="orSpan">OR</span>
+									<span class="spanLine"></span>
+								</div>
+								<button class="socialBtn">
+									<img th:src="@{/img/google.svg}">Sign Up with Google</button>-->
+							</div>
+						</li>
+						<li class="lastLi"><p>Already have an account? <a th:href="@{/login}">Sign In</a></p>
+						</li>
+					</ul>
+				</div>
+		</form>
+	</div>
+	<!--------End Login Section-------------->
+
+</section>
+
+<div th:replace="~{fragment/script}"></div>
+<script>
+    let pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
+    let strongRegex = new RegExp("((?=.*\\d{3})(?=.*[a-z]{3})(?=.*[A-Z]{3})(?=.*[!@#$&*]).{10,128})");
+	function createAccount(){
+       
+        if($('#firstName').val()===''){
+            $('#firstNameError').show();
+            $('#firstName').addClass("errorInput");
+            return;
+        }
+        if($('#lastName').val()===''){
+            $('#lastNameError').show();
+            $('#lastName').addClass("errorInput");
+            return;
+        }
+        if($('#email').val()===''){
+            $('#emailError').show();
+            $('#email').addClass("errorInput");
+            return;
+        }else if(!pattern.test($('#email').val())){
+            $('#emailError').text("Invalid email address");
+            $('#emailError').show();
+            $('#email').addClass("errorInput");
+            return;
+        }
+
+        if($('#contactNo').val()===''){
+            $('#contactError').show();
+            $('#contactNo').addClass("errorInput");
+            return;
+        }
+
+        if($('#password').val()===''){
+            $('#passwordError').show();
+            $('#password').addClass("errorInput");
+            return;
+        }else if(!strongRegex.test($('#password').val())){
+            $('#passwordError').text("Improper password pattern -> Password must be 3 Capital Alphabets,1 Special character , 3 Small alphabet and 3 digits");
+            $('#passwordError').show();
+
+            $('#password').addClass("errorInput");
+        }
+
+        let payload = {
+            "data": {
+                email: $('#email').val(),
+                name: $('#firstName').val()+" "+$('#lastName').val(),
+                contactNo: $('#contactNo').val(),
+                password:  $('#password').val(),
+	            provider: "rfl"
+            }
+        };
+
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: "/public/create-account",
+            'data': JSON.stringify(payload),
+            'dataType': 'json',
+            type: 'POST',
+        }).then(function mySuccess(response) {
+	        
+                if (response.error === true) {
+                    $('#errorDiv').text(response.data);
+                    $('#errorDiv').show();
+                }
+                else {
+                    let data= response.data;
+                    $('#errorDiv').hide();
+                    $('#successDiv').show();
+                    $('#firstName').val('');
+                    $('#lastName').val('');
+                    $('#email').val('');
+                    $('#contactNo').val('');
+                    $('#password').val('');
+                }
+
+            },
+            function myError(error) {
+            });
+        
+        
+	}
+
+    $("#firstName").on("input", function() {
+       
+        if($(this).val()!==''){
+            $('#firstNameError').hide();
+            $('#firstName').removeClass("errorInput");
+        }else{
+            $('#firstNameError').show();
+            $('#firstName').addClass("errorInput");
+        }
+        
+    });
+
+    $("#lastName").on("input", function() {
+
+        if($(this).val()!==''){
+            $('#lastNameError').hide();
+            $('#lastName').removeClass("errorInput");
+        }else{
+            $('#lastNameError').show();
+            $('#lastName').addClass("errorInput");
+        }
+
+    });
+
+   
+    $("#email").on("input", function() {
+
+        if($(this).val()===''){
+            $('#emailError').show();
+            $('#email').addClass("errorInput");
+            $('#emailError').text("Please provide email");
+        }else if(!pattern.test($(this).val())){
+            $('#emailError').text("Invalid email address");
+            $('#emailError').show();
+            $('#email').addClass("errorInput");
+        }else{
+            $('#emailError').hide();
+            $('#email').removeClass("errorInput");
+        }
+
+    });
+
+
+    $("#contactNo").on("input", function() {
+        if($(this).val()!==''){
+            $('#contactError').hide();
+            $('#contactNo').removeClass("errorInput");
+        }else{
+            $('#contactError').show();
+            $('#contactNo').addClass("errorInput");
+        }
+    });
+
+    $("#password").on("input", function() {
+        
+        if($(this).val()===''){
+            $('#passwordError').show();
+            $('#password').addClass("errorInput");
+        }else if(!strongRegex.test($(this).val())){
+            $('#passwordError').text("Improper password pattern -> Password must be 3 Capital Alphabets,1 Special character , 3 Small alphabet and 3 digits");
+            $('#passwordError').show();
+            
+            $('#password').addClass("errorInput");
+        }else{
+            $('#passwordError').hide();
+            $('#password').removeClass("errorInput");
+        }
+    });
+    
+</script>
+</body>
+
+</html>

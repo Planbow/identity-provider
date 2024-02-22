@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head th:replace="~{fragment/head}"></head>
+<body>
+
+<!--- [start :: ] header ------->
+<div th:insert="~{fragment/header.html}"></div>
+<!--- [end :: ] header   ------->
+
+<section class="sideSec">
+	
+	<!--- [start :: ] nav ------->
+	<div th:insert="~{fragment/side-nav.html}"></div>
+	<!--- [end :: ] nav   ------->
+	
+	<div class="rightSec homeRightSec">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 col-">
+					<div class="commanBox profBox">
+						<ul class="commanUl">
+							<li class="cmnli1">
+								<label class="bigHead">Payments and subscriptions <img class="resImg"
+								                                                       src="img/subscription.svg"></label>
+								<p>Your payment info, transactions, recurring payments and reservations</p>
+							</li>
+							<li class="cmnli2">
+								<img src="img/subscription.svg">
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 col-">
+					<div class="addCard">
+						<button data-toggle="modal" data-target="#myModal">
+							<img src="img/add.svg">
+							Add Card
+						</button>
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 col-">
+				</div>
+			</div>
+			<h3 class="cardHead bigHead">Already have added</h3>
+			<div class="row">
+				<div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 col-">
+					<div class="cardDetailsDiv">
+						<ul>
+							<li class="cardLi">
+								<span style="background-image: url(./img/visa.svg);"></span>
+							</li>
+							<li class="cardDetails">
+								<p class="cardName">Visa....4740</p>
+								<span class="cardExp">Expires 12/27</span>.
+							</li>
+						</ul>
+					</div>
+					<div class="cardAction">
+						<a>Cancel</a>
+						<a>Edit</a>
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 col-">
+					<div class="cardDetailsDiv">
+						<ul>
+							<li class="cardLi">
+								<span style="background-image: url(./img/master.png);"></span>
+							</li>
+							<li class="cardDetails">
+								<p class="cardName">Master....4740</p>
+								<span class="cardExp">Expires 12/27</span>.
+							</li>
+						</ul>
+					</div>
+					<div class="cardAction">
+						<a>Cancel</a>
+						<a>Edit</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title bigHead">Add your payment method</h4>
+				<img class="close" data-dismiss="modal" src="img/cancel.svg">
+			</div>
+			<!-- Modal body -->
+			<div class="modal-body">
+				<form class="cardForm">
+					<ul class="formUL">
+						<li class="">
+							<label>Card Number</label>
+							<input placeholder="xxxx - xxxx - xxxx - xxxx">
+						</li>
+						<li class="">
+							<label>Expires On</label>
+							<input placeholder="mm/yy">
+						</li>
+						<li>
+							<label>CVV</label>
+							<input placeholder="Code">
+						</li>
+					</ul>
+				</form>
+			</div>
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" class="cmnButton">Add Card</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</section>
+
+</body>
+
+<div th:replace="~{fragment/script}"></div>
+
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var header = document.getElementById("myHeader");
+    var affix = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > affix) {
+            header.classList.add("affix");
+        } else {
+            header.classList.remove("affix");
+        }
+    }
+</script>
+<script>
+    $(document).ready(function(){
+        $("#hide").click(function(){
+            $(".searchDiv").hide();
+        });
+        $("#show").click(function(){
+            $(".searchDiv").show();
+        });
+    });
+</script>

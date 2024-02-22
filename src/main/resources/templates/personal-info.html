@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"  >
+<head th:replace="~{fragment/head}"></head>
+<body xmlns:th="http://www.thymeleaf.org"   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!--- [start :: ] header ------->
+<div th:insert="~{fragment/header.html}"></div>
+<!--- [end :: ] header   ------->
+
+<section class="sideSec">
+	
+	<!--- [start :: ] nav ------->
+	<div th:insert="~{fragment/side-nav.html}"></div>
+	<!--- [end :: ] nav   ------->
+	
+	<div class="rightSec homeRightSec">
+		<div class="container">
+			<div class="profileDiv">
+				<label class="bigHead">Personal Info</label>
+				<p>Info about you and your preferences across Planbow services</p>
+			</div>
+			<div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 col-">
+					<div class="">
+						<ul class="commanUl padZero">
+							<li class="cmnli1">
+								<label class="bigHead">Your profile info in Planbow services <img class="resImg" src="img/proInfo.svg"></label>
+								<p class="cpMargin">Personal info and options to manage it. You can make some of this info, like your contact details, visible to others so that they can reach you easily. You can also see a summary of your profiles.</p>
+							</li>
+							<li class="cmnli2">
+								<img class="norImg" src="img/proInfo.svg">
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 col- commanBox12">
+					<div class="basicInfo">
+						<label class="commanLabel boxLabel">Basic Info</label>
+						<p>Some info may be visible to other people using Planbow services. <a>Find out more</a></p>
+						<ul class="lookingUl">
+							<li class="">
+								<a><span class="titleSpan">PHOTO</span> <span class="valueSpan">A photo helps personalized your account</span>
+									<span>
+										<img class="userImg" th:if="${#authentication.principal.profilePic != null }" th:src="${#authentication.principal.profilePic}"/>
+					  <img class="userImg" th:if="${#authentication.principal.profilePic == null}" th:src="@{/img/user.png}"/>
+									</span></a>
+							</li>
+							<li class="">
+								<a th:href="@{/change-name}">
+									<span class="titleSpan">NAME</span>
+									<span class="valueSpan" sec:authentication="principal.name"></span>
+									<img class="imgArrow" th:src="@{/img/arroeRight.svg}">
+								</a>
+							</li>
+							<li class="">
+								<a th:href="@{/change-dob}"><span class="titleSpan">Birthday</span>
+									<span class="valueSpan"  th:if="${#authentication.principal.dateOfBirth != null }" sec:authentication="principal.dateOfBirth"></span>
+									<span class="valueSpan"  th:if="${#authentication.principal.dateOfBirth == null }">NA</span>
+									<img class="imgArrow" src="img/arroeRight.svg">
+								</a>
+							</li>
+							<li class="">
+								<a th:href="@{/change-gender}"><span class="titleSpan">Gender</span>
+									<span class="valueSpan"  th:if="${#authentication.principal.gender != null }" sec:authentication="principal.gender"></span>
+									<span class="valueSpan"  th:if="${#authentication.principal.gender == null }">NA</span>
+									<img class="imgArrow" src="img/arroeRight.svg">
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 col- commanBox12">
+					<div class="basicInfo">
+						<label class="commanLabel boxLabel">Contact Info</label>
+						<ul class="lookingUl">
+							<li class="">
+								<a><span class="titleSpan">Email</span>
+									<span class="valueSpan" sec:authentication="principal.email"></span>
+									<img class="imgArrow" src="img/arroeRight.svg">
+								</a>
+							</li>
+							<li class="">
+								<a th:href="@{/change-phone}"><span class="titleSpan">Phone</span>
+									<span class="valueSpan"  th:if="${#authentication.principal.contactNo != null }" sec:authentication="principal.contactNo"></span>
+									<span class="valueSpan"  th:if="${#authentication.principal.contactNo == null }">NA</span>
+									<img class="imgArrow" src="img/arroeRight.svg">
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!--<div class="col-xl-6 col-lg-12 col-md-6 col-xs-12 col- commanBox6">
+					<div class="commanBox homeBox profBasic">
+						<ul class="commanUl">
+							<li class="cmnli1">
+								<label class="boxLabel">Your profiles</label>
+								<p>See how your different profile appear in Planbow services</p>
+							</li>
+						</ul>
+						<div class="commanLink">
+							<a>See Profile</a>
+						</div>
+					</div>
+				</div>-->
+				<div class="col-xl-12 col-lg-12 col-md-6 col-xs-12 col- commanBox12">
+					<div class="commanBox homeBox profBasic">
+						<ul class="commanUl">
+							<li class="cmnli1">
+								<label class="boxLabel">Choose what other see <img class="resImg" src="img/choose.svg"></label>
+								<p>Decide what personal information you make visible to others when you use your main Planbow Account profile across Planbow services</p>
+							</li>
+							<li class="cmnli2">
+								<img class="norImg" src="img/choose.svg">
+							</li>
+						</ul>
+						<div class="commanLink">
+							<a th:href="@{/profile}">Go to About me</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 col- ">
+					<div class="">
+						<ul class="commanUl padZero">
+							<li class="cmnli1">
+								<label class="bigHead">Other info and preferences for<br>  Planbow services
+									<img class="resImg" src="img/otherserv.svg"></label>
+								<p>Ways to verify that it’s you and settings for the web</p>
+							</li>
+							<li class="cmnli2">
+								<img class="norImg" src="img/otherserv.svg">
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 col- commanBox12">
+					<div class=" password1">
+						<ul class="commanUl passUl">
+							<li class="cmnli1">
+								<label class="boxLabel">Password</label>
+								<p>A secure password helps protect your Planbow Account</p>
+								<div class="passwordDiv">
+									<a>
+										<span class="passTitle">******</span>
+										<span>Last Change 17 Apr 2021</span>
+									</a>
+									<img class="imgArrow" src="img/arroeRight.svg">
+								</div>
+							</li>
+						</ul>
+						<div class="commanLink">
+							<a>See Profile</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<div class="modal fade" id="changName">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title bigHead">Change Name</h4>
+				<img  class="close" data-dismiss="modal" src="img/cancel.svg">
+			</div>
+			<!-- Modal body -->
+			<div class="modal-body" style="padding:15px;">
+				<form class="cardForm commanForm">
+					<ul class="formUL">
+						<li class="">
+							<label>First Name</label>
+							<input placeholder="First Name">
+							<span class="errorMsg">Enter valid Email Address</span>
+						</li>
+						<li class="">
+							<label>Last Name</label>
+							<input placeholder="Last Name">
+						</li>
+					</ul>
+				</form>
+			</div>
+			<!-- Modal footer -->
+			<div class="modal-footer cfModel">
+				<button type="button" class="cmnButton cancelBtn">Cancel</button>
+				<button type="button" data-dismiss="modal" class="cmnButton">Save</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</body>
+
+<div th:replace="~{fragment/script}"></div>
+
+<script>
+    window.onscroll = function() {myFunction()};
+    var header = document.getElementById("myHeader");
+    var affix = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > affix) {
+            header.classList.add("affix");
+        } else {
+            header.classList.remove("affix");
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function(){
+        $("#hide").click(function(){
+            $(".searchDiv").hide();
+        });
+        $("#show").click(function(){
+            $(".searchDiv").show();
+        });
+    });
+</script>

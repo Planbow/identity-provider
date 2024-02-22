@@ -1,0 +1,88 @@
+<!--<div th:fragment="side-nav" class="side-nav manage_pagenav">
+	<div class="sidenav-inner">
+		<ul class="list">
+			<li th:classappend="${active == 'dashboard'} ? 'active-nav' : ''  ">
+				<a th:href="@{/dashboard}">
+		            <span class="menu-img">
+			             <img th:if="${active == 'dashboard'}" src="img/dashboard/manage/home-active.svg"/>
+			             <img th:unless="${active == 'dashboard'}" src="img/dashboard/manage/home.svg"/>
+		
+		            </span>
+					<span class="menu-txt">Home</span>
+				</a>
+			</li>
+			<li th:classappend="${active == 'personal-info'} ? 'active-nav' : ''  ">
+				<a th:href="@{/personal-info}">
+		            <span class="menu-img">
+			             <img th:if="${active == 'personal-info'}" src="img/dashboard/manage/info-active.svg"/>
+			             <img th:unless="${active == 'personal-info'}" src="img/dashboard/manage/info.svg"/>
+		
+		            </span>
+					<span class="menu-txt">Personal Info</span>
+				</a>
+			</li>
+			<li th:classappend="${active == 'security'} ? 'active-nav' : ''  ">
+				<a th:href="@{/security}">
+		            <span class="menu-img">
+			             <img th:if="${active == 'security'}" src="img/dashboard/manage/security-active.svg"/>
+			             <img th:unless="${active == 'security'}" src="img/dashboard/manage/security.svg"/>
+		
+		            </span>
+					<span class="menu-txt">Security</span>
+				</a>
+			</li>
+			<li th:classappend="${active == 'about'} ? 'active-nav' : ''  ">
+				<a th:href="@{/about}">
+		            <span class="menu-img">
+			             <img th:if="${active == 'about'}" src="img/dashboard/manage/about-active.svg"/>
+			             <img th:unless="${active == 'about'}" src="img/dashboard/manage/about.svg"/>
+		
+		            </span>
+					<span class="menu-txt">About</span>
+				</a>
+			</li>
+			<li th:classappend="${active == 'payment'} ? 'active-nav' : ''  ">
+				<a th:href="@{/payment}">
+		            <span class="menu-img">
+			             <img th:if="${active == 'payment'}" src="img/dashboard/manage/payment-active.svg"/>
+			             <img th:unless="${active == 'payment'}" src="img/dashboard/manage/payment.svg"/>
+		
+		            </span>
+					<span class="menu-txt">Payment And Subscription</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>-->
+
+<div th:fragment="side-nav" class="sidemenu">
+	<ul>
+		<li>
+			<a th:href="@{/dashboard}"  th:classappend="${active == 'dashboard'} ? 'active' : ''  " >
+				
+				<img th:if="${active == 'dashboard'}" th:src="@{/img/homecolor.svg}"/>
+				<img th:unless="${active == 'dashboard'}" th:src="@{/img/homedark.svg}"/>
+			Home</a></li>
+		<li><a  th:href="@{/personal-info}" th:classappend="${active == 'personal-info'} ? 'active' : ''  "  >
+			<img th:if="${active == 'personal-info'}" th:src="@{/img/usercolor.svg}"/>
+			<img th:unless="${active == 'personal-info'}" th:src="@{/img/userdark.svg}"/>
+			
+			Personal Info</a></li>
+		<li><a th:href="@{/security}" th:classappend="${active == 'security'} ? 'active' : ''  ">
+			
+			<img th:if="${active == 'security'}" th:src="@{/img/securitycolor.svg}"/>
+			<img th:unless="${active == 'security'}" th:src="@{/img/securitydark.svg}"/>
+			
+			Security</a></li>
+		<li><a th:href="@{/about}" th:classappend="${active == 'about'} ? 'active' : ''  ">
+			<img th:if="${active == 'about'}" th:src="@{/img/aboutcolor.svg}"/>
+			<img th:unless="${active == 'about'}" th:src="@{/img/aboutdark.svg}"/>
+			
+			About</a></li>
+		<li><a  th:href="@{/payment}" th:classappend="${active == 'payment'} ? 'active' : ''  ">
+			<img th:if="${active == 'payment'}" th:src="@{/img/paymentcolor.svg}"/>
+			<img th:unless="${active == 'payment'}" th:src="@{/img/paymentdark.svg}"/>
+			
+			Payment & Subscription</a></li>
+	</ul>
+</div>

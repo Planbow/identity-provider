@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head th:replace="~{fragment/head}"></head>
+<body>
+<section class="accountSec">
+	
+	<!--------Start Login Section-------------->
+	<div class="accountDiv_outer signIn" >
+		<img class="leftImg" th:src="@{/img/leaf.svg}">
+		<img class="rightImg" th:src="@{/img/signinIllustrator.svg}">
+		<form name="f" th:action="@{/login}" method="post" onsubmit="return login()" autocomplete="off">
+			<div class="loginDiv">
+				<img class="logoNida" th:src="@{/img/logo.png}">
+				
+				<div class="signInHead">
+					<label>Sign In</label>
+					<p>Use your Planbow Account</p>
+				</div>
+				
+				<ul class="formUL">
+					<br/>
+					<li>
+						<div>
+							<label>Email Address</label>
+							<input placeholder="email address"  type="text" id="username" name="username">
+							<span class="errorMsg" id="emailError" style="display: none">Please provide email address</span>
+						</div>
+					</li>
+					<li>
+						<div>
+							<label>Password</label>
+							<input placeholder="security password" id="password" type="password"  name="password">
+							<span class="errorMsg" id="passwordError" style="display: none">Please provide security password</span>
+						</div>
+					</li>
+					<li>
+						<div th:if="${param.error}" class="errormsg_Div">
+							Unauthorized Domain Access<br>
+							You are not authorized to access this resource.<br>
+							Please contact to your administrator
+						</div>
+					</li>
+					<li class="forgotLI">
+						<a th:href="@{/forgot-password}">Forgot Password?</a>
+					</li>
+					<li class="socialLi">
+						<div class="btmButtonDiv">
+							<button class="cmnButton" onclick="login()">Login</button>
+							<div class="orDiv">
+								<span class="orSpan">OR</span>
+								<span class="spanLine"></span>
+							</div>
+							<a th:href="@{/oauth2/authorization/google}"><button class="socialBtn" type="button">
+								<img th:src="@{/img/google.svg}">Login with Google</button></a>
+						</div>
+					</li>
+					<li class="lastLi"><p>Don't have an account? <a th:href="@{/create-account}">Sign Up</a></p></li>
+				</ul>
+			</div>
+		</form>
+	</div>
+	<!--------End Login Section-------------->
+	
+
+</section>
+<div th:replace="~{fragment/script}"></div>
+<script>
+    let pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
+    let strongRegex = new RegExp("((?=.*\\d{3})(?=.*[a-z]{3})(?=.*[A-Z]{3})(?=.*[!@#$&*]).{10,128})");
+
+    function login(){
+        if($('#username').val()===''){
+            $('#emailError').show();
+            $('#username').addClass("errorInput");
+            return false;
+        }else if(!pattern.test($('#username').val())){
+            $('#emailError').text("Invalid email address");
+            $('#emailError').show();
+            $('#username').addClass("errorInput");
+            return false;
+        }
+
+        if($('#password').val()===''){
+            $('#passwordError').show();
+            $('#password').addClass("errorInput");
+            return false;
+        }else if(!strongRegex.test($(this).val())){
+            $('#passwordError').text("Improper password pattern -> Password must be 3 Capital Alphabets,1 Special character , 3 Small alphabet and 3 digits");
+            $('#passwordError').show();
+            $('#password').addClass("errorInput");
+            return false;
+        }
+
+        return true;
+    }
+    $("#username").on("input", function() {
+
+        if($(this).val()===''){
+            $('#emailError').show();
+            $('#username').addClass("errorInput");
+            $('#emailError').text("Please provide email");
+        }else if(!pattern.test($(this).val())){
+            $('#emailError').text("Invalid email address");
+            $('#emailError').show();
+            $('#username').addClass("errorInput");
+        }else{
+            $('#emailError').hide();
+            $('#username').removeClass("errorInput");
+        }
+
+    });
+    
+
+    $("#password").on("input", function() {
+
+        if($(this).val()===''){
+            $('#passwordError').show();
+            $('#password').addClass("errorInput");
+        }else if(!strongRegex.test($(this).val())){
+            $('#passwordError').text("Improper password pattern -> Password must be 3 Capital Alphabets,1 Special character , 3 Small alphabet and 3 digits");
+            $('#passwordError').show();
+
+            $('#password').addClass("errorInput");
+        }else{
+            $('#passwordError').hide();
+            $('#password').removeClass("errorInput");
+        }
+    });
+</script>
+</body>
+
+</html>

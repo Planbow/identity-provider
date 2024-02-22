@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="25.5" height="25.854" viewBox="0 0 25.5 25.854">
+  <g id="sendIcon" transform="translate(0.25 0.25)">
+    <path id="Icon_material-chat_bubble_outline" data-name="Icon material-chat_bubble_outline" d="M25.5,3H5.5A2.507,2.507,0,0,0,3,5.5V28l5-5H25.5A2.507,2.507,0,0,0,28,20.5V5.5A2.507,2.507,0,0,0,25.5,3Zm0,17.5H8L5.5,23V5.5h20Z" transform="translate(-3 -3)" fill="#666" stroke="#fff" stroke-width="0.5"/>
+    <path id="Icon_ionic-ios-information" data-name="Icon ionic-ios-information" d="M16.552,11.874a.93.93,0,1,1,.925.9A.9.9,0,0,1,16.552,11.874Zm.063,1.615h1.724v6.5H16.615Z" transform="translate(29.981 25.984) rotate(180)" fill="#666"/>
+  </g>
+</svg>

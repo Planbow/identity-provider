@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"  >
+<html lang="en">
+<head th:replace="~{fragment/head}"></head>
+<style type="text/css">
+    .header {
+        padding-bottom: 13px;
+    }
+</style>
+<body xmlns:th="http://www.thymeleaf.org"   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<div class="bar" style="display: none"> <div></div></div>
+<!--- [start :: ] header ------->
+<div  th:insert="~{fragment/header.html}"></div>
+<!--- [end :: ] header   ------->
+
+
+<section class="extraSec">
+    <div class="container">
+        <div class="pageHeading">
+            <a th:href="@{/personal-info}" class="a_pagehead"><img src="img/leftarrow.svg">Name</a>
+            <p class="pagePara">Changes to your name will be reflected across your Planbow Account.</p>
+
+            <div class="extra_commanBox">
+
+                <ul class="formUL">
+                    <li>
+                        <p class="heading"> CHANGE NAME </p>
+                    </li>
+                    <li>
+                        <div>
+                            <label>First Name</label>
+                            <input autocomplete="off" placeholder="first name" type="text" id="firstName" th:value="${#strings.arraySplit(#authentication.principal.name,' ')[0]}" name="firstName" >
+                            <span class="errorMsg" id="firstNameError" style="display: none">Please provide first name</span>
+                        </div>
+                    </li>
+                    <br/>
+                    <li>
+                        <div>
+                            <label>Last Name</label>
+                            <input autocomplete="off" placeholder="last name" type="text" id="lastName" th:value="${#strings.arraySplit(#authentication.principal.name,' ')[1]}" name="lastName">
+                            <span class="errorMsg" id="lastNameError" style="display: none">Please provide last name</span>
+                        </div>
+                    </li>
+                    <li>
+
+                        <div class="errormsg_Div" id="errorDiv" style="display: none">
+
+                        </div>
+                        <div class="successmsg_Div" id="successDiv" style="display: none" >
+                            Your Planbow account name changed successfully
+                        </div>
+
+                    </li>
+                </ul>
+                <div class="boxActions">
+                    <label>Who can see your name</label>
+                    <p>Anyone can see this information when they communicate with you or view content that you create in Planbow services.</p>
+                    <div class="boxActionsDiv">
+                        <a th:href="@{/personal-info}" class="cancelBtn">Cancel</a>
+                        <button class="commanBtn" id="update" onclick="updateName()">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+
+<div th:replace="~{fragment/script}"></div>
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var header = document.getElementById("myHeader");
+    var affix = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > affix) {
+            header.classList.add("affix");
+        } else {
+            header.classList.remove("affix");
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function(){
+        $("#hide").click(function(){
+            $(".searchDiv").hide();
+        });
+        $("#show").click(function(){
+            $(".searchDiv").show();
+        });
+    });
+
+    $("#firstName").on("input", function() {
+
+        if($(this).val()!==''){
+            $('#firstNameError').hide();
+            $('#firstName').removeClass("errorInput");
+        }else{
+            $('#firstNameError').show();
+            $('#firstName').addClass("errorInput");
+        }
+
+    });
+
+    $("#lastName").on("input", function() {
+
+        if($(this).val()!==''){
+            $('#lastNameError').hide();
+            $('#lastName').removeClass("errorInput");
+        }else{
+            $('#lastNameError').show();
+            $('#lastName').addClass("errorInput");
+        }
+
+    });
+
+    function updateName(){
+        if($('#firstName').val()===''){
+            $('#firstNameError').show();
+            $('#firstName').addClass("errorInput");
+            return;
+        }
+        if($('#lastName').val()===''){
+            $('#lastNameError').show();
+            $('#lastName').addClass("errorInput");
+            return;
+        }
+        $('.bar').show();
+        $('#update').prop('disabled', true);
+        let payload = {
+            "data": {
+                name: $('#firstName').val()+" "+$('#lastName').val(),
+            }
+        };
+
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: "/account/update-profile",
+            'data': JSON.stringify(payload),
+            'dataType': 'json',
+            type: 'POST',
+        }).then(function mySuccess(response) {
+                $('.bar').hide();
+                $('#update').prop('disabled', false);
+                if (response.error === true) {
+                    $('#errorDiv').text(response.data);
+                    $('#errorDiv').show();
+                }
+                else {
+                    let data= response.data;
+                    $('#errorDiv').hide();
+                    $('#successDiv').show().delay(2000).fadeOut();
+
+                }
+
+            },
+            function myError(error) {
+            });
+
+
+    }
+</script>

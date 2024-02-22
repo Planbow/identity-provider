@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"  >
+<html lang="en">
+<head th:replace="~{fragment/head}"></head>
+<style type="text/css">
+    .header {
+        padding-bottom: 13px;
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active{
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
+    }
+</style>
+<body xmlns:th="http://www.thymeleaf.org"   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<div class="bar" style="display: none"> <div></div></div>
+<!--- [start :: ] header ------->
+<div  th:insert="~{fragment/header.html}"></div>
+<!--- [end :: ] header   ------->
+
+
+<section class="extraSec">
+    <div class="container">
+        <div class="pageHeading">
+            <a th:href="@{/personal-info}" class="a_pagehead"><img src="img/leftarrow.svg">Birthday</a>
+            <p class="pagePara">Your birthday may be used for personalization across Nidavellir services.</p>
+
+            <div class="extra_commanBox">
+                <ul class="formUL ">
+                    <li>
+                        <p class="heading"> UPDATE BIRTHDAY </p>
+                    </li>
+                    <li>
+                        <div>
+                            <label>Date of Birth</label>
+                            <input type="date" id="dateOfBirth"  name="dateOfBirth" th:value="${#authentication.principal.dateOfBirth }">
+                            <span class="errorMsg" id="dobError" style="display: none"></span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="errormsg_Div" id="errorDiv" style="display: none">
+
+                        </div>
+                        <div class="successmsg_Div" id="successDiv" style="display: none" >
+                            Your Planbow account birthday changed successfully
+                        </div>
+
+                    </li>
+                </ul>
+                <div class="boxActions">
+                    <label>Who can see your birthday</label>
+                    <p>Anyone can see this information when they communicate with you or view content that you create in Planbow services.</p>
+                    <div class="boxActionsDiv">
+                        <a th:href="@{/personal-info}" class="cancelBtn">Cancel</a>
+                        <button class="commanBtn" id="update" onclick="updateName()">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+
+<div th:replace="~{fragment/script}"></div>
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var header = document.getElementById("myHeader");
+    var affix = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > affix) {
+            header.classList.add("affix");
+        } else {
+            header.classList.remove("affix");
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function(){
+        $("#hide").click(function(){
+            $(".searchDiv").hide();
+        });
+        $("#show").click(function(){
+            $(".searchDiv").show();
+        });
+
+    });
+
+
+    $("#dateOfBirth").on("input", function() {
+        if($(this).val()!==''){
+            $('#dobError').hide();
+            $('#dateOfBirth').removeClass("errorInput");
+        }
+    });
+
+    function updateName(){
+        if($('#dateOfBirth').val()===''){
+            $('#dobError').text("Please fill in a complete birthday");
+            $('#dobError').show();
+            $('#dateOfBirth').addClass("errorInput");
+            return;
+        }
+        $('.bar').show();
+        $('#update').prop('disabled', true);
+        let payload = {
+            "data": {
+                dateOfBirth: $('#dateOfBirth').val()
+            }
+        };
+
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: "/account/update-profile",
+            'data': JSON.stringify(payload),
+            'dataType': 'json',
+            type: 'POST',
+        }).then(function mySuccess(response) {
+                $('.bar').hide();
+                $('#update').prop('disabled', false);
+                if (response.error === true) {
+                    $('#errorDiv').text(response.data);
+                    $('#errorDiv').show();
+                }
+                else {
+                    let data= response.data;
+                    $('#errorDiv').hide();
+                    $('#successDiv').show().delay(2000).fadeOut();
+                }
+
+            },
+            function myError(error) {
+            });
+
+
+    }
+</script>

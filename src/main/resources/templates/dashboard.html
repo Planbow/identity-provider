@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragment/head}"></head>
+<body>
+
+<!--- [start :: ] header ------->
+<div th:insert="~{fragment/header.html}"></div>
+<!--- [end :: ] header   ------->
+
+<section class="sideSec">
+	
+	<!--- [start :: ] nav ------->
+	<div th:insert="~{fragment/side-nav.html}"></div>
+	<!--- [end :: ] nav   ------->
+	
+	<div class="rightSec homeRightSec">
+		<div class="container">
+			<div class="profileDiv">
+				<img th:if="${#authentication.principal.profilePic != null}" th:src="${#authentication.principal.profilePic}"/>
+				<img th:if="${#authentication.principal.profilePic == null}" th:src="@{/img/user.png}"/>
+				<label class="bigHead" sec:authentication="name"></label>
+				<p>Manage your info, privacy and security to make Planbow work better for you</p>
+			</div>
+			<div class="row">
+				
+				<div class="col-xl-6 col-lg-12 col-md-6 col-xs-12 col- commanBox6">
+					<div class=" ">
+						<ul class="commanUl">
+							<li class="cmnli1">
+								<label class="boxLabel">Privacy &<br>
+									personalisation <img class="resImg" src="img/privacy.svg"></label>
+								<p>See the data in your Planbow Account and choose what activity is saved, to personalise your rightful labs experience</p>
+							</li>
+							<li class="cmnli2">
+								<img class="norImg" src="img/privacy.svg">
+							</li>
+						</ul>
+						<div class="commanLink">
+							<a th:href="@{/personal-info}" >Manage your data & Privacy</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-xl-6 col-lg-12 col-md-6 col-xs-12 col- commanBox6">
+					<div class=" ">
+						<ul class="commanUl">
+							<li class="cmnli1">
+								<label class="boxLabel">You have security<br>
+									recommendations <img class="resImg" src="img/security.svg"></label>
+								<p>Recommended actions found in the
+									Security Check-up</p>
+							</li>
+							<li class="cmnli2">
+								<img class="norImg" src="img/security.svg">
+							</li>
+						</ul>
+						<div class="commanLink">
+							<a th:href="@{/security}">Protect your account</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 col- commanBox12">
+					
+					<ul class="commanUl">
+						<li class="cmnli1">
+							<label class="boxLabel">Privacy suggestions available <img class="resImg" src="img/suggestions.svg"></label>
+							<p>Take the Privacy Check-Up and choose the settings that are right for you</p>
+						</li>
+						<li class="cmnli2">
+							<img class="norImg" src="img/suggestions.svg">
+						</li>
+					</ul>
+					<div class="commanLink">
+						<a>Review suggestions(4)</a>
+					</div>
+				
+				</div>
+				
+
+			</div>
+		</div>
+	</div>
+
+
+</section>
+
+</body>
+
+<div th:replace="~{fragment/script}"></div>
+
+<script>
+    window.onscroll = function() {myFunction()};
+    var header = document.getElementById("myHeader");
+    var affix = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > affix) {
+            header.classList.add("affix");
+        } else {
+            header.classList.remove("affix");
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function(){
+        $("#hide").click(function(){
+            $(".searchDiv").hide();
+        });
+        $("#show").click(function(){
+            $(".searchDiv").show();
+        });
+    });
+</script>
+
+</html>

@@ -1,0 +1,49 @@
+spring:
+    application:
+        name: identity-provider
+    config:
+        import: optional:configserver:${config.server.url}
+    cloud:
+        bus:
+            enabled: true
+    #thymeleaf:
+    #   cache: false
+    #   prefix: file:src/main/resources/templates/
+    session:
+        store-type: redis
+    main:
+        allow-circular-references: true
+    security:
+        oauth2:
+            client:
+                registration:
+                    google:
+                        client-id: ${identity.google.clientId}
+                        client-secret: ${identity.google.clientSecret}
+                        redirect-uri: ${identity.google.redirectUri}
+                        scope:
+                            - email
+                            - profile
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+    endpoint:
+        health:
+            show-components: always
+            show-details: always
+server:
+    port: 80
+    servlet:
+        session:
+            tracking-modes: COOKIE
+            timeout: 2430000000
+logging:
+    level:
+        root: INFO
+        org.springframework.web: INFO
+        org.springframework.security: INFO
+        org.springframework.security.oauth2: INFO
+verify:
+    url: ${identity.verify.url}

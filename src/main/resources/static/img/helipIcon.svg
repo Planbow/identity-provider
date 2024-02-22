@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26.5" height="26.5" viewBox="0 0 26.5 26.5">
+  <g id="helipIcon" transform="translate(0.25 0.25)">
+    <path id="Icon_material-help-outline" data-name="Icon material-help-outline" d="M14.7,23.8h2.6V21.2H14.7ZM16,3A13,13,0,1,0,29,16,13,13,0,0,0,16,3Zm0,23.4A10.4,10.4,0,1,1,26.4,16,10.414,10.414,0,0,1,16,26.4ZM16,8.2a5.2,5.2,0,0,0-5.2,5.2h2.6a2.6,2.6,0,0,1,5.2,0c0,2.6-3.9,2.275-3.9,6.5h2.6c0-2.925,3.9-3.25,3.9-6.5A5.2,5.2,0,0,0,16,8.2Z" transform="translate(-3 -3)" fill="#666" stroke="#fff" stroke-width="0.5"/>
+  </g>
+</svg>

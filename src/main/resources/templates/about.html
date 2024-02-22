@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head th:replace="~{fragment/head}"></head>
+<body>
+
+<!--- [start :: ] header ------->
+<div th:insert="~{fragment/header.html}"></div>
+<!--- [end :: ] header   ------->
+
+<section class="sideSec">
+	
+	<!--- [start :: ] nav ------->
+	<div th:insert="~{fragment/side-nav.html}"></div>
+	<!--- [end :: ] nav   ------->
+	
+	<div class="rightSec homeRightSec">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 col-">
+					<div class="">
+						<ul class="commanUl padZero">
+							<li class="cmnli1">
+								<label class="bigHead">All of Planbow, working for you <img class="resImg" src="img/aboutimg.svg"></label>
+								<p class="cpMargin">Sign in to your Planbow, and get the most out of all the Planbow services that you use. Your account helps you do more by personalising your RightFul Labs experience and offering easy access to your most important information from anywhere.</p>
+							</li>
+							<li class="cmnli2">
+								<img class="norImg" src="img/aboutimg.svg">
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 col- commanBox12">
+					<div class="">
+						<ul class="commanUl commanUl25">
+							<li class="cmnli1">
+								<label class="boxLabel">Helps you</label>
+								<p>When you’re signed in, all of the Planbow services that you use work together seamlessly to offer help with everyday tasks for services data labs , wts , campaign labs and many more</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 col- commanBox12">
+					<div class="">
+						<ul class="commanUl commanUl25">
+							<li class="cmnli1">
+								<label  class="boxLabel">Built for you</label>
+								<p>No matter which device or Planbow service you’re using, your account gives you a consistent experience that you can customise and manage at any time.</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 col- commanBox12">
+					<div class="">
+						<ul class="commanUl commanUl25">
+							<li class="cmnli1">
+								<label  class="boxLabel">Protects you</label>
+								<p>Your Planbow Account is protected by industry-leading security that automatically helps detect and block threats before they ever reach you.</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+			
+			</div>
+		</div>
+	</div>
+
+
+</section>
+
+</body>
+
+<div th:replace="~{fragment/script}"></div>
+
+<script>
+    window.onscroll = function() {myFunction()};
+    var header = document.getElementById("myHeader");
+    var affix = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > affix) {
+            header.classList.add("affix");
+        } else {
+            header.classList.remove("affix");
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function(){
+        $("#hide").click(function(){
+            $(".searchDiv").hide();
+        });
+        $("#show").click(function(){
+            $(".searchDiv").show();
+        });
+    });
+</script>

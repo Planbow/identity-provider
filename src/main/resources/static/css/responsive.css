@@ -1,0 +1,594 @@
+
+@media only screen and (max-width: 1480px) {
+.rightSec .container
+{
+width: 100%;
+}
+
+
+
+.addCard button {
+    width: 100%;
+    height: 140px;
+}
+
+.signInHead label {
+    font-weight: 400;
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.signInHead p {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 18px;
+}
+
+.logoNida {
+    width: 140px;
+}
+
+.btmButtonDiv {
+    margin-top: 0px;
+}
+
+.boxLabel {
+    font-size: 18px !important;
+}
+
+.bigHead {
+    font-size: 24px !important;
+}
+
+.orDiv {
+    margin: 10px 0px;
+}
+
+.formUL li input
+{
+       height: 40px;
+       font-size: 13px; 
+}
+
+.formCreatUL
+{
+    margin-bottom: 3px;
+}
+
+.cmnButton, .socialBtn
+{
+     padding: 8px 15px;
+    font-size: 14px;   
+}
+
+.lastLi p {
+    font-size: 13px;
+    margin-bottom: 0px !important;
+}
+
+.forgotDiv .rightImg {
+    width: 170px;
+    right: -169px;
+}
+
+.forgotDiv .leftImg {
+    width: 120px;
+}
+
+.forgotDiv .signInHead p
+{
+margin-bottom: 38px;
+}
+
+.signIn .forgotLI {
+    text-align: right;
+    margin-bottom: 31px !important;
+    margin-top: -18px !important;
+}
+
+.signIn .lastLi
+{
+    margin-bottom: 0;
+}
+
+.signIn .loginDiv, .forgotDiv .loginDiv
+{
+padding: 25px 30px;
+width: 400px;
+}
+
+.signIn .forgotLI a
+{
+font-size:13px; 
+}
+
+.signIn .socialLi
+{
+      margin-bottom: 11px;  
+}
+
+.modal-body {
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 15px 9px;
+}
+
+.cardForm .formUL li label
+{
+    top: -3px;
+    left: 19px;
+}
+
+.modal-header .bigHead
+{
+font-size: 18px !important;
+}
+
+.cardForm ul li {
+margin-bottom: 25px !important;
+}
+
+.modal-header
+{
+
+}
+
+}
+
+
+@media only screen and (max-width: 993px) {
+
+.sidemenu
+{
+display: none;
+}
+
+
+.sidemenutop
+{
+display: block;
+width: 100%;
+position: unset;
+}
+
+.homeRightSec
+{
+padding-left: 0px;
+}
+
+.sidemenutop  ul
+{
+display: flex;
+    width: 100%;
+    overflow-x: auto;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    margin-top: 12px;
+}
+
+
+
+.sidemenutop ul li {
+    flex: auto;
+    text-align: center;
+    min-width: 100px;
+}
+
+.sidemenutop ul li a
+{
+white-space: nowrap;
+    text-align: center;
+    background-color: unset !important;
+    padding: 10px 0px 0px 0px;
+    text-align: center;
+    font-size: 14px;
+    color: #5f6368 !important;
+    display: inline-block;
+}
+
+.sidemenutop ul li a.active
+{
+    color: #019BA1 !important;
+}
+
+.sidemenutop ul li a.active:after
+{
+display: inline-block;
+    content: "";
+    width: 100%;
+    height: 4px;
+    background-color: #019BA1;
+    display: block;
+    margin: auto;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;  
+}
+
+.header {
+    padding-bottom: 0px;
+}
+
+.header.affix {
+    border-bottom: 0;
+}
+
+
+.rightSec .container {
+    width: 100%;
+    max-width: 100%;
+}
+
+
+.commanBox6 {
+    max-width: 46.4%;
+    margin: 10px 1.8%;
+}
+
+.commanBox12 {
+max-width: 96.4%;
+    margin: 10px 1.8%;
+}
+
+.headerUl li:nth-child(1) {
+    padding-left: 0px;
+}
+
+}
+
+
+@media only screen and (max-width: 768px) {
+
+.accountSec 
+{
+padding: 0px 25px;  
+}
+
+.profBox .cmnli2
+{
+display: none;
+}
+
+.resImg
+{
+    display: inline-block;
+    height: 70px;
+    margin-left: 18px;
+    float: right;
+}
+
+.profBox .cmnli1 label {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.profBox .cmnli1 p {
+    width: 100%;
+}
+
+.profBox .cmnli1 label br
+{
+display: none;
+}
+
+.norImg
+{
+display: none;
+}
+
+.securityAct12 .titleSpan
+{
+        min-width: auto;
+    display: block;
+    width: unset;
+}
+
+.signing a {
+    display: flex !important;
+    align-items: center;
+    display: block !important;
+    position: relative;
+    padding-left: 53px !important;
+}
+
+.signing .titleSpan img {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 0px;
+    top: 16px;
+}
+
+.signing .imgArrow {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+}
+
+.addCard button {
+    width: 100%;
+    height: 130px;
+    font-size: 18px;
+    border: 1px solid #019ba1;
+}
+
+.addCard button img {
+    width: 31px;
+}
+
+.commanBox6, .commanBox12 {
+    max-width: 100%;
+    margin: 10px 15px;
+}
+
+.bigHead {
+font-size: 20px !important;
+    line-height: 30px !important;
+}
+
+.cmnli1 label
+{
+     font-size: 18px;  
+}
+
+.profileDiv label
+{
+      font-size: 20px;  
+}
+
+.commanUl
+{
+       padding-left: 15px;
+    padding-right: 15px; 
+}
+
+.commanLabel {
+    padding: 25px 15px 0px 15px;
+}
+
+.basicInfo p {
+    padding: 0px 15px;
+}
+
+.lookingUl li {
+    padding-left: 15px;
+}
+
+.commanUl.padZero
+{
+padding-left: 0px;
+padding-right: 0px;
+}
+
+.profBox .cmnli1 label, .cardHead
+{
+     font-size: 20px;   
+}
+
+.boxLabel {
+    font-size: 18px !important;
+}
+
+.bigHead {
+    font-size: 22px !important;
+}
+
+p
+{
+   margin-bottom: 10px; 
+}
+
+.cardDetailsDiv {
+    padding: 15px;
+}
+
+.cardDetailsDiv li.cardLi span
+{
+     width: 60px;
+    height: 44px;
+}
+
+.cardAction {
+    border: 1px solid #DEDEDE;
+    padding: 10px 15px;
+}
+
+.cardAction a {
+color: #019BA1 !important;
+    font-size: 15px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+::-webkit-scrollbar {
+     display: none;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+
+.pagePara {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+
+
+}
+
+
+@media only screen and (max-width: 575px) {
+
+.loginDiv
+{
+width: 100%;
+}
+
+.rightImg, .leftImg
+{
+display: none;  
+}
+
+.socialBtn, .cmnButton
+{
+min-width: 100%;
+}   
+
+.formCreatUL li {
+    width: 100% !important;
+    margin: auto;
+    margin-bottom: 26px;
+}
+
+.createAcccount .loginDiv {
+    padding: 35px 30px;
+}
+
+.formCreatUL .btmButtonDiv {
+    margin-top: 0px;
+ }
+
+ .signInHead label {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.formCreatUL {
+    margin-bottom: 0;
+ }
+
+.createAcccount .loginDiv {
+    padding: 5px 30px;
+}
+
+.createAcccount .logoNida {
+    width: 130px;
+}
+
+.createAcccount .loginDiv {
+    padding: 25px 30px 5px 30px;
+}
+
+.accountSec {
+    padding: 8px 15px;
+    position: unset;
+    transform: unset;
+    margin-top: 25px;
+}
+
+.createAcccount .loginDiv {
+    padding: 25px 15px 5px 15px;
+}
+
+.form-item--with-scaling-label label
+{
+padding: 17px 15px; 
+}
+
+.form-item--with-scaling-label input, .form-item--with-scaling-label textarea {
+    padding: 21px 15px 10px 15px;
+}
+
+.homeSearch
+{
+display: none;
+}
+
+.resSearch
+{
+display: block;
+}
+
+.resSearchIcon
+{
+
+}
+
+.searchDiv
+{
+    background-color: #fff;
+    padding: 12px;
+    width: 70%;
+    position: absolute;
+    left: 10px;
+    box-shadow: 0px 1px 4px rgb(0 0 0 / 26%);
+    padding-left: 50px;
+    border-radius: 8px;
+    top: 8px;
+    z-index: 1;
+    display: none;
+}
+
+.resSearch .searchDiv a 
+{
+position: absolute;
+    left: 11px;
+    top: 12px;
+    opacity: 0.8;
+}
+
+.resSearch .searchDiv a img
+{
+    width: 19px;
+}
+
+.resSearch .searchDiv input 
+{
+    width: 100%;
+    border: 0;
+    padding-top: 1px;
+}
+
+.resSearchIcon
+{
+    margin-top: 9px;
+    display: inline-block;
+    margin-right: 17px;
+}
+
+.manageAccli {
+    display: flex;
+}
+
+
+.basicInfo .titleSpan
+{
+  display: block;  
+}
+
+.basicInfo .imgArrow {
+    float: right;
+    margin-top: -4px;
+}
+
+.resImgNone
+{
+  display: none;  
+}
+
+.commanResUl
+{
+padding-bottom: 0px;
+}
+
+.errorMsg {
+    bottom: -16px;
+    color: #e14545;
+    font-size: 10px;
+}
+
+.signIn .loginDiv, .forgotDiv .loginDiv
+{
+padding: 25px 15px;
+width: 100%;
+}
+
+.accountDiv_outer
+{
+     width: 100%;   
+}
+
+}
+

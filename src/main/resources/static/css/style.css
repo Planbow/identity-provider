@@ -1,0 +1,1447 @@
+/*-----------Start inclusion-----------*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body,
+html {
+    font-family: Poppins, sans-serif !important;
+    overflow-x: hidden;
+}
+
+li,
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+a,
+button,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+img,
+input,
+label,
+p,
+textarea {
+    transition: all 0.2s ease 0s;
+    outline: 0 !important;
+    outline-color: none !important;
+    color: #2B2B2B;
+}
+
+p {
+    font-size: 14px;
+    line-height: 24px;
+    color: #666666;
+}
+
+a,
+button {
+    outline: 0;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+section {
+    display: inline-block;
+    width: 100%;
+}
+
+::selection {
+    color: #fff;
+    background: #019BA1;
+}
+
+
+/*Start Textbox Input*/
+
+.form-item {
+    position: relative;
+    margin-bottom: 25px;
+    transition: color 0.4s ease;
+    color: #b4b4aa;
+}
+
+.form-item--with-scaling-label label {
+    top: 0;
+    left: 0;
+    position: absolute;
+    pointer-events: none;
+    transform-origin: 0 0;
+    z-index: 1;
+    padding: 17px 15px;
+    transition: transform 0.2s;
+    transition-timing-function: ease-out;
+}
+
+.form-item__label {
+    display: inline-block;
+    font-weight: 500 !important;
+    vertical-align: middle;
+    color: #888888;
+    padding: 10px 10px 10px 0;
+}
+
+.form-text,
+.form-email,
+.form-password,
+.form-number,
+.form-select,
+.form-tel,
+.form-date,
+textarea {
+    padding: 15px;
+    border: 1px solid #d2d2c8;
+    background-color: #fff;
+    border-radius: 3px;
+    background-clip: padding-box;
+    width: 100%;
+    transition: 0.1s all linear;
+}
+
+.form-item--with-scaling-label input,
+.form-item--with-scaling-label textarea {
+    padding: 21px 20px 10px 15px;
+}
+
+.form-item--with-scaling-label.form-item--input-filled label {
+    transform: translate3d(5px, -5px, 0) scale3d(0.7, 0.7, 1);
+    color: #019ba1;
+}
+
+
+/*End Textbox Input*/
+
+.accountSec, .successSec {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100% !important;
+    text-align: center;
+}
+
+.accountDiv_outer, .successDivOuter {
+    position: relative;
+    display: inline-block;
+}
+
+.loginDiv, .successDiv {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 35px 30px;
+    text-align: center;
+    width: 600px;
+    margin: auto;
+    border: 1px solid #dfdfdf;
+}
+
+.signInHead label {
+    font-weight: 500;
+    font-size: 28px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.errorInput
+{
+border-color: #e14545 !important;
+}
+
+.signInHead p {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.cmnButton {
+    min-width: 270px;
+    border: 0px;
+    background-color: #019ba1;
+    color: #fff;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+
+.cmnButton:hover {
+    background-color: #01767a;
+}
+
+.orDiv {
+    margin: 17px 0px;
+}
+
+.btmButtonDiv {
+    display: inline-block;
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+.orDiv .orSpan {
+    display: inline-block;
+    background-color: #F8F8F8;
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 29px;
+    border-radius: 30px;
+    border: 1px solid #dfdfdf;
+    position: relative;
+    z-index: 1;
+}
+
+.orDiv .spanLine {
+    width: 100px;
+    border: 1px solid #e3e3e3;
+    display: block;
+    margin: auto;
+    position: relative;
+    top: -16px;
+}
+
+.socialBtn {
+    min-width: 270px;
+    border: 0px;
+    background-color: #fff;
+    color: #2B2B2B;
+    border-radius: 4px;
+    padding: 9px 12px;
+    font-size: 16px;
+    border: 1px solid #DEDEDE;
+    font-weight: 500;
+}
+
+.socialBtn img {
+    margin-right: 11px;
+    vertical-align: -6px;
+    height: 22px;
+}
+
+.forgotLI {
+    text-align: right;
+}
+
+.forgotLI a {
+    color: #019ba1 !important;
+    font-weight: 500;
+}
+
+.forgotLI a:hover {
+    color: #01767a !important;
+}
+
+.lastLi p {
+    font-weight: 500;
+    color: #606060;
+}
+
+.lastLi p a {
+    color: #019ba1 !important;
+}
+
+.lastLi p a:hover {
+    color: #01767a !important;
+}
+
+.rightImg {
+    width: 220px;
+    position: absolute;
+    right: -210px;
+    bottom: 0;
+    z-index: -1;
+}
+
+.leftImg {
+    width: 170px;
+    position: absolute;
+    left: -120px;
+    bottom: 0;
+    z-index: -1;
+}
+
+.logoNida {
+    width: 230px;
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+.createAcccount .loginDiv {
+    padding: 25px 15px 5px 15px;
+}
+
+.formCreatUL {
+    display: inline-block;
+    width: 100%;
+}
+
+.formCreatUL li {
+    float: left;
+    width: 46%;
+    margin: 0px 2%;
+    position: relative;
+}
+
+.createAcccount .leftImg {
+    left: -174px;
+}
+
+.createAcccount .rightImg {
+    width: 180px;
+    right: -129px;
+}
+
+/*-----------Start home CSS------------*/
+
+.header {
+    padding: 15px;
+    border-bottom: 1px solid #ebebeb;
+    transition: unset !important;
+
+}
+
+.headerUl {
+    display: flex;
+    margin: 0;
+}
+
+
+
+.headerUl li:nth-child(1) {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.homeLogo img {
+    margin-top: 5px;
+    height: 24px;
+    margin-right: 2px;
+}
+
+.homeLogo p {
+    display: inline-block;
+    font-size: 20px;
+    vertical-align: -4px;
+    color: #5F6368;
+    margin: 0;
+    line-height: unset;
+}
+
+.homeSearch {
+    margin-left: 40px;
+    position: relative;
+    width: 40%;
+}
+
+.homeSearch input {
+    width: 100%;
+    padding: 8px 15px;
+    background-color: #EBEBEB;
+    border: 0;
+    border-radius: 4px;
+    padding-left: 40px;
+}
+
+.homeSearch i {
+    position: absolute;
+    left: 12px;
+    top: 10px;
+}
+
+.manageAccli .dropdown button {
+    border: 0px;
+    background-color: transparent;
+}
+
+.manageAccli .userImg {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-position: center;
+    border-radius: 90px;
+    background-size: cover;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+.header.affix {
+    position: fixed;
+    width: 100%;
+    box-shadow: 0px 2px 5px rgb(0 0 0 / 28%);
+    background-color: #fff;
+    top: 0;
+    z-index: 3;
+}
+
+.sidemenu {
+    display: inline-block;
+    position: fixed;
+    left: 0;
+    top: 98px;
+}
+
+.sidemenu ul {
+    border-bottom: 1px solid #dfdfdf;
+    padding-bottom: 24px;
+}
+
+.sidemenu ul li a {
+    font-size: 14px;
+    font-weight: 400;
+    display: block;
+    padding: 10px 25px;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+
+.sidemenu ul li a img {
+    margin-right: 14px;
+    width: 25px;
+    height: 25px;
+}
+
+.selectImg {
+    display: none;
+}
+
+.sidemenu ul li a.active .selectImg {
+    display: inline-block;
+}
+
+.sidemenu ul li a.active {
+    color: #019BA1;
+    background-color: #E6F0F1;
+}
+
+.sidemenu ul li a.active .deselectImg {
+    display: none;
+}
+
+.sidemenu ul li a:hover {
+    background-color: #f3f3f3;
+    color: #2B2B2B;
+}
+
+.rightSec {
+    padding-left: 300px;
+}
+
+.profileDiv {
+    text-align: center;
+    margin-top: 18px;
+}
+
+.profileDiv img {
+    display: block;
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    border-radius: 80px;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 15px;
+}
+
+.profileDiv label {
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.commanBox6,
+.commanBox12 {
+    border: 1px solid #cfcfcf;
+    border-radius: 11px;
+    margin-bottom: 25px;
+    overflow: hidden;
+    padding: 0;
+    max-width: 47%;
+    margin: 10px 1%;
+}
+
+.commanBox12 {
+    max-width: 96%;
+    margin: 10px 1%;
+}
+
+.commanUl {
+    margin: 0px;
+    padding: 25px;
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 70px;
+}
+
+.cmnli1 label {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+    min-width: 100%;
+    display: inherit;
+}
+.cmnli1 {
+    flex: 1;
+}
+.cmnli2 img {
+    margin-left: 15px;
+}
+
+.commanLink {
+    border-top: 1px solid #cfcfcf;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.commanLink a {
+    color: #019BA1 !important;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 15px;
+    display: inline-block;
+}
+
+.sidemenutop {
+    display: none;
+}
+
+.resSearch {
+    display: none;
+}
+
+.lookingUl {
+    margin: 0;
+}
+
+.commanLabel {
+    padding: 25px 25px 0px 25px;
+    display: block;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.lookingUl li {
+    padding-left: 25px;
+    transition: all 0.2s ease 0s;
+}
+
+.lookingUl li:hover {
+    background-color: #e6f0f1;
+}
+
+.lookingUl li:last-child a {
+    border: 0px;
+}
+
+.lookingUl li a {
+    padding: 14px 25px 14px 0px;
+    border-bottom: 1px solid #cfcfcf;
+    display: inline-block;
+    width: 100%;
+    font-size: 14px;
+}
+
+.lookingDivMain .lookingUl li a
+{
+    position: relative;
+    padding-left: 35px;
+}
+
+.lookingDivMain .lookimg
+{
+    position: absolute;
+    left: 0;
+    top: 14px;
+}
+
+.imgArrow {
+    float: right;
+    margin-top: 5px;
+}
+
+.lookimg {
+    width: 20px;
+    margin-right: 15px;
+}
+
+.commPara {
+    padding: 0px 15px;
+}
+
+.dropUl {
+    left: unset;
+    right: 0px !important;
+    top: 14px !important;
+    width: 300px;
+    box-shadow: 0px 2px 10px rgb(0 0 0 / 19%);
+    text-align: center;
+    border: 0;
+    border-radius: 10px;
+}
+
+.dropDiv1 {
+    width: 300px;
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 17px;
+}
+
+.dropprofile {
+    text-align: center;
+    margin-top: 13px;
+}
+
+.dropprofile img {
+    display: block;
+    width: 60px;
+    height: 60px;
+    background-position: center;
+    border-radius: 90px;
+    background-size: cover;
+    vertical-align: middle;
+    margin-right: 6px;
+    margin: auto;
+}
+
+.dropDiv1 label {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    color: #222;
+    margin-top: 13px;
+    margin-bottom: 0;
+}
+
+.dropDiv1 span {
+    font-size: 12px;
+    display: block;
+}
+
+.dropDiv1 a {
+    display: block;
+    margin: auto;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid #999;
+    width: 247px;
+    padding: 5px;
+    color: #222;
+    margin-top: 14px;
+    border-radius: 30px;
+    transition: all 0.2s ease 0s;
+}
+
+.dropDiv1 a:hover {
+    background-color: #e6f0f1;
+}
+
+.dropDiv2 {
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 2px;
+}
+
+.dropDiv2 div {
+    position: relative;
+    text-align: left;
+    padding-left: 70px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.dropDiv2 div span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #019ba1;
+    color: #fff;
+    line-height: 30px;
+    border-radius: 50px;
+    position: absolute;
+    left: 28px;
+    top: 13px;
+    text-align: center;
+}
+
+.dropDiv2 div label {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: -5px;
+}
+
+.dropDiv2 div p {
+    margin: 0;
+    margin-top: -7px;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.dropDiv2 div img {
+    width: 20px;
+    position: absolute;
+    left: 34px;
+    top: 9px;
+}
+
+.signOut {
+    display: block;
+    margin: auto;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid #999;
+    width: 247px;
+    padding: 5px;
+    color: #222 !important;
+    margin-top: 14px;
+    border-radius: 4px;
+    transition: all 0.2s ease 0s;
+    margin-bottom: 7px;
+}
+
+.signOut:hover {
+    background-color: #e6f0f1;
+}
+
+.profBox {
+    border: 0px;
+    margin-top: 15px;
+}
+
+.profBox .cmnli1 label {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.profBox .cmnli1 p {
+    width: 80%;
+}
+
+.profBox .cmnli2 img {
+    height: 148px;
+}
+
+.profBox .commanUl {
+    padding: 0px;
+}
+
+.resImg {
+    display: none;
+}
+
+.basicInfo p {
+    padding: 0px 25px;
+}
+
+.basicInfo p a {
+    color: #019BA1 !important;
+    font-weight: 500;
+}
+
+.basicInfo .titleSpan {
+    text-transform: uppercase;
+    color: #5f6368;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    display: inline-block;
+    width: 140px;
+}
+
+.basicInfo .valueSpan {
+    font-size: 14px;
+    font-weight: 500;
+    padding-right: 30px;
+}
+
+.basicInfo .userImg {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-position: center;
+    border-radius: 90px;
+    background-size: cover;
+    vertical-align: middle;
+    float: right;
+    margin-top: -10px;
+}
+
+.password1 .commanUl {
+    display: inline-block;
+    width: 100%;
+}
+
+.passwordDiv {
+    display: flex;
+    align-content: center;
+    border-bottom: 1px solid #d0d0d0;
+    padding: 20px 0px;
+}
+
+.passwordDiv span {
+    display: block;
+}
+
+.passwordDiv a {
+    flex: 1
+}
+.passwordDiv span {
+    font-size: 14px;
+    color: #5F6368;
+}
+
+.passTitle {
+    color: #202124 !important;
+    font-weight: 500;
+}
+
+.passImg {
+    width: 21px;
+    margin-right: 15px;
+}
+
+.commanUl li:last-child .passwordDiv {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.securityAct12 .titleSpan {
+    text-transform: unset;
+    font-size: 15px;
+    color: #202124;
+    min-width: 400px;
+}
+
+.securityAct12 .valueSpan {
+    color: #5f6368;
+    font-weight: 400;
+}
+
+.check {
+    width: 22px;
+    vertical-align: -6px;
+    margin-right: 6px;
+}
+
+.securityAct12 p {
+    padding: 0px;
+}
+
+.devices .passwordDiv img {
+    width: 30px;
+}
+
+.devices .passwordDiv img.check {
+    width: 19px !important;
+}
+
+.tpImg {
+    width: 38px;
+}
+
+.devices .passwordDiv {
+    padding: 10px 0px;
+    border: 0px;
+}
+
+.signing .titleSpan {
+    min-width: 350px;
+    display: flex;
+    align-items: center;
+}
+
+.signing .titleSpan img {
+    width: 50px;
+    height: 50px;
+    margin-right: 14px;
+}
+
+.signing .valueSpan {
+    flex: 1;
+}
+
+.signing a {
+    display: flex !important;
+    align-items: center;
+}
+
+.addCard button {
+    width: 100%;
+    height: 200px;
+    background-color: transparent;
+    border: 2px solid #019ba1;
+    border-radius: 10px;
+    color: #019ba1;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.addCard button img {
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.cardHead {
+    margin-top: 45px;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.cardDetailsDiv {
+    border: 1px solid #DEDEDE;
+    padding: 25px;
+    border-radius: 15px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 0;
+}
+
+.cardDetailsDiv ul {
+    display: flex;
+    align-items: center;
+}
+
+.cardDetailsDiv li.cardLi {
+    margin-right: 15px;
+}
+
+.cardDetailsDiv li.cardLi span {
+    background-image: url(./img/visa.svg);
+    border: 1px solid #dfdfdf;
+    width: 80px;
+    height: 54px;
+    display: inherit;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50px;
+    border-radius: 4px;
+}
+.cardDetails p {
+    margin: 0;
+    font-weight: 500;
+    color: #333;
+}
+
+.cardExp {
+    font-size: 14px;
+    color: #777;
+}
+.cardAction {
+    border: 1px solid #DEDEDE;
+    padding: 18px;
+    border-radius: 15px;
+    text-align: right;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    margin-bottom: 25px;
+}
+
+.cardAction a {
+    font-weight: 500;
+    margin-left: 20px;
+    color: #019ba1 !important;
+}
+
+.commanUl25 {
+    padding-bottom: 25px;
+}
+
+.padZero {
+    padding: 25px 0px;
+}
+
+.cpMargin {
+    width: 70%;
+}
+
+.cuBottom55 {
+    padding-bottom: 55px;
+}
+
+img.close {
+    width: 64px;
+}
+
+.cardForm ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cardForm ul li {
+    flex: 1;
+    margin-bottom: 25px !important;
+    padding: 0px 7px;
+}
+
+.cardForm ul li:first-child {
+    min-width: 100%;
+}
+
+.cardForm ul li span {
+    display: inline-block;
+    width: 100%;
+    color: #222;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.cardForm ul li input {
+    width: 100%;
+    padding: 15px;
+    margin-top: 6px;
+    border: 1px solid #c7c7c7;
+    border-radius: 6px;
+}
+
+
+.modal-footer button {
+    min-width: 200px;
+}
+
+.errorMsg
+{
+position: absolute;
+    left: 0;
+    bottom: -20px;
+    color: #e14545;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.headerUl li:nth-child(1)
+{
+ padding-left: 11px;   
+}
+
+.formUL li
+{
+    position: relative;
+    margin-bottom: 31px;
+}
+
+.formUL li label
+{
+position: absolute;
+    background: #ffffff;
+    padding: 0px 4px;
+    top: -9px;
+    left: 10px;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #2b2b2b;
+}
+
+.formUL li input
+{
+width: 100%;
+    border: 1px solid #cdcdcd;
+    border-radius: 4px;
+    height: 45px;
+    padding: 0px 12px;
+    font-size: 14px;
+}
+
+.signIn .formUL li span.errorMsg
+{
+    bottom: -19px;
+}
+
+
+.forgotDiv .formUL li span.errorMsg
+{
+    bottom: -19px;
+}
+
+.signIn .formUL li .form-item
+{
+margin-bottom: 30px;
+}
+
+.commanForm ul
+{
+display: block !important;
+}
+
+.commanForm li
+{
+    margin-bottom: 17px !important;
+    position: relative;
+    padding: 0px !important;
+}
+
+.commanForm li .errorMsg
+{
+    bottom: -18px;
+    color: #e14545 !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+}
+
+.cfModel button
+{
+    min-width: 120px;
+}
+
+.cancelBtn
+{
+color: #3c3c3c;
+    font-weight: 500;
+    background-color: transparent !important;
+}
+
+.bigHead {
+    font-size: 26px !important;
+    line-height: 39px !important;
+    font-weight: 400 !important;
+}
+
+.boxLabel
+{
+font-size: 20px !important;
+line-height: 26px;
+font-weight: 400 !important;
+}
+
+.socialUL li
+{
+margin-bottom: 0px;
+}
+
+.successDiv
+{
+ padding: 15px;   
+}
+
+.successHead
+{
+
+}
+
+.successHead label
+{
+    font-size: 24px;
+    margin-bottom: 1px;
+}
+
+.successHead p
+{
+margin-bottom: 35px;
+}
+
+.successHead img
+{
+width: 200px;
+    display: block;
+    margin: auto;
+    margin-bottom: 22px;
+    margin-top: 10px;
+}
+
+.inputDiv
+{
+position: relative;
+}
+
+.inputDiv label
+{
+    position: absolute;
+    background: #ffffff;
+    padding: 0px 4px;
+    top: -9px;
+    left: 10px;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #2b2b2b;
+}
+
+.inputDiv input
+{
+    width: 100%;
+    border: 1px solid #cdcdcd;
+    border-radius: 4px;
+    height: 45px;
+    padding: 0px 12px;
+    font-size: 14px;
+}
+
+.cardForm li label
+{
+    top: -4px;
+    left: 20px;
+}
+
+.commanForm li label
+{
+    top: -3px;
+    left: 12px;
+}
+
+.inputDiv span
+{
+
+}
+
+.extraSec
+{
+
+}
+
+.pageHeading
+{
+    max-width: 500px;
+    margin-top: 30px;
+}
+
+.a_pagehead
+{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    min-width: 100%;
+}
+.a_pagehead:hover
+{
+   color: black;
+}
+
+.a_pagehead img
+{
+    width: 17px;
+    vertical-align: -2px;
+    margin-right: 14px;
+}
+
+.pagePara
+{
+    margin-top: 10px;
+    margin-bottom: 45px;
+}
+
+.extra_commanBox
+{
+border: 1px solid #cfcfcf;
+    border-radius: 11px;
+    margin-bottom: 25px;
+    overflow: hidden;
+padding: 35px 25px 25px 25px;
+}
+
+.extra_commanBox .heading {
+    font-family: Poppins, sans-serif !important;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.extraUl
+{
+
+}
+
+.extraUl li
+{
+position: relative;
+    margin-bottom: 32px;
+}
+
+
+.extraUl li label
+{
+position: absolute;
+    background: #ffffff;
+    padding: 0px 4px;
+    top: -3px;
+    left: 10px;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #2b2b2b;
+}
+
+.extraUl li input, .extraUl li select
+{
+width: 100%;
+    margin-top: 6px;
+    border: 1px solid #c7c7c7 !important;
+    border-radius: 6px;
+    color: #666;
+    height: 45px;
+    padding: 12px;
+    font-size: 13px;
+
+}
+
+.extraUl li select {
+    padding: 11px 19px 11px 9px;
+}
+
+.commanMsg
+ {
+text-align: center;
+ }
+
+ .commanMsg img
+ {
+display: block;
+    margin: auto;
+    width: 65px;
+    margin-bottom: 18px;
+ }
+
+ .commanMsg label
+ {
+    font-size: 20px;
+ }
+
+.commanMsg p
+ {
+
+ }
+
+
+.extraUl li .errorMsg
+{
+
+}
+
+.boxActions
+{
+
+}
+
+.boxActionsDiv
+{
+text-align: right;
+}
+
+.boxActions label
+{
+
+    font-weight: 500;
+    margin-top: 13px;
+    margin-bottom: 3px;
+
+}
+
+.boxActions p
+{
+margin-bottom: 45px;
+}
+
+.boxActions .cancelBtn
+{
+color: #3c3c3c;
+    font-weight: 500;
+    background-color: transparent !important;
+    border: 0;
+    margin-right: 25px;
+}
+
+.boxActions .commanBtn
+{
+    border: 0px;
+    background-color: #019ba1;
+    color: #fff;
+    border-radius: 4px;
+    padding: 6px 15px;
+    font-size: 16px;
+}
+.boxActions .commanBtn:hover
+{
+    background-color: #01767a;
+}
+.pageHeading
+{
+
+}
+
+.successmsg_Div
+{
+display: inline-block;
+    width: 100%;
+    background-color: #28a745b3;
+    color: #fff;
+    padding: 9px 15px;
+    font-size: 13px;
+    border-radius: 4px;
+}
+
+.errormsg_Div
+{
+display: inline-block;
+    width: 100%;
+    background-color: #e5505e;
+    color: #fff;
+    padding: 9px 15px;
+    font-size: 13px;
+    border-radius: 4px;
+}
+
+
+
+/* PROGRESS BAR LOADER */
+
+.bar {
+    position:absolute;
+    width:100%;
+    height:4px;
+    background:#acece6;
+    overflow:hidden;
+}
+.bar div:before {
+    content:"";
+    position:absolute;
+    top:0px;
+    left:0px;
+    bottom:0px;
+    background:#26a69a;
+    animation:box-1 2100ms cubic-bezier(0.65,0.81,0.73,0.4) infinite;
+}
+.bar div:after {
+    content:"";
+    position:absolute;
+    top:0px;
+    left:0px;
+    bottom:0px;
+    background:#26a69a;
+    animation:box-2 2100ms cubic-bezier(0.16,0.84,0.44,1) infinite;
+    animation-delay:1150ms;
+}
+@keyframes box-1 {
+    0% {
+        left:-35%;
+        right:100%;
+    }
+    60%,100% {
+        left:100%;
+        right:-90%;
+    }
+}
+@keyframes box-2 {
+    0% {
+        left:-200%;
+        right:100%;
+    }
+    60%,100% {
+        left:107%;
+        right:-8%;
+    }
+}
+
+
+
+
+/*------------End home CSS------------*/
