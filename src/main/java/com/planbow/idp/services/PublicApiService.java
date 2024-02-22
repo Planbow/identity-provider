@@ -127,7 +127,7 @@ public class PublicApiService {
             rolesEntities.add(publicApiRepository.getUserRoleEntity());
             userEntity.setRolesEntity(rolesEntities);
         } else
-            return ResponseJsonUtil.getResponse("Invalid provider type must be nidavellir or google only", 400, ResponseConstants.BAD_REQUEST.getStatus(), true);
+            return ResponseJsonUtil.getResponse("Invalid provider type must be planbow or google only", 400, ResponseConstants.BAD_REQUEST.getStatus(), true);
         publicApiRepository.addUserEntity(userEntity);
         confirmRegistrationEmail(userEntity, provider);
         return ResponseJsonUtil.getResponse(ResponseConstants.SUCCESS.getStatus(), 200, ResponseConstants.SUCCESS.getStatus(), false);
