@@ -6,7 +6,12 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.planbow.idp.entities.*;
 import com.planbow.idp.repository.PublicApiRepository;
+import com.planbow.idp.utility.PlanbowUtility;
 import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import lombok.extern.log4j.Log4j2;
 import com.planbow.util.json.handler.response.ResponseJsonHandler;
 import com.planbow.util.json.handler.response.util.ResponseConstants;
@@ -15,11 +20,14 @@ import com.planbow.util.utility.core.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
+import java.io.IOException;
 import java.util.*;
 
 @Service
@@ -52,10 +60,10 @@ public class PublicApiService {
         this.configuration = configuration;
     }
 
- /*   @Autowired
+    @Autowired
     public void setJavaMailSender(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
-    }*/
+    }
 
     @Autowired
     public void setPublicApiRepository(PublicApiRepository publicApiRepository) {
@@ -128,8 +136,9 @@ public class PublicApiService {
             userEntity.setRolesEntity(rolesEntities);
         } else
             return ResponseJsonUtil.getResponse("Invalid provider type must be planbow or google only", 400, ResponseConstants.BAD_REQUEST.getStatus(), true);
-        publicApiRepository.addUserEntity(userEntity);
-        confirmRegistrationEmail(userEntity, provider);
+        userEntity=publicApiRepository.addUserEntity(userEntity);
+        UserEntity finalUserEntity = userEntity;
+        new Thread(()-> confirmRegistrationEmail(finalUserEntity, provider)).start();
         return ResponseJsonUtil.getResponse(ResponseConstants.SUCCESS.getStatus(), 200, ResponseConstants.SUCCESS.getStatus(), false);
 
     }
@@ -146,21 +155,27 @@ public class PublicApiService {
             Map<String, Object> model = new HashMap<>();
             model.put("name", userEntity.getName());
             model.put("verifyUrl", verifyUrl);
-            /*MimeMessage message = javaMailSender.createMimeMessage();
+            model.put("date", PlanbowUtility.formatDate(new Date()));
+            String content = """
+                Please verify your email id by clicking below link
+                """;
+
+            model.put("content",content);
+            MimeMessage message = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message);
             Template t = null;
             try {
-                t = configuration.getTemplate("emailVerification.html");
+                t = configuration.getTemplate("emailVerification.ftl");
                 String text = FreeMarkerTemplateUtils.processTemplateIntoString(t, model);
 
                 helper.setTo(userEntity.getEmail());
-                helper.setFrom("no-reply@nidavellirs.com");
-                helper.setSubject("Nidavellir - Verify email account");
+                helper.setFrom("no-reply@planbow.com");
+                helper.setSubject("Planbow - Verify email account");
                 helper.setText(text, true);
                 javaMailSender.send(message);
             } catch (TemplateException | MessagingException | IOException e) {
                 log.error("exception {}",e.getMessage());
-            }*/
+            }
         } else {
             log.info("Sending greeting email to user");
         }
