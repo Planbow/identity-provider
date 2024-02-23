@@ -25,6 +25,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
 import java.io.IOException;
@@ -181,22 +182,36 @@ public class PublicApiService {
         }
     }
 
-    public String verifyToken(String token) {
+    public String verifyToken(String token, Model model) {
         TokenVerificationEntity tokenVerificationEntity = publicApiRepository.getTokenVerificationEntity(token);
+        model.addAttribute("verifyUrl",System.getenv("WEBSITE.URL"));
+        String content = """
+                Unable to verify your email address
+                Please contact administrator regarding this issue
+                """;
         if (tokenVerificationEntity != null) {
             UserEntity userEntity = tokenVerificationEntity.getUserEntity();
             if (userEntity != null) {
+                model.addAttribute("name",userEntity.getName());
                 if (Boolean.TRUE.equals(userEntity.getIsAccountVerified())) {
+                    model.addAttribute("content","Your account is already verified , start exploring planbow features");
                     return "alreadyVerified";
                 } else {
+                    model.addAttribute("content","Your account is now verified , start exploring planbow features");
                     userEntity.setIsActive(true);
                     userEntity.setIsAccountVerified(true);
                     publicApiRepository.addUserEntity(userEntity);
                     return "verificationSuccess";
                 }
-            } else return "verificationFailure";
+            } else{
+                model.addAttribute("name","User");
+                model.addAttribute("content",content);
+                return "verificationFailure";
+            }
 
         } else {
+            model.addAttribute("name","User");
+            model.addAttribute("content",content);
             return "verificationFailure";
         }
     }

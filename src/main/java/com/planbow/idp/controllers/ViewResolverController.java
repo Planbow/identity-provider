@@ -121,8 +121,8 @@ public class ViewResolverController {
     }
 
     @GetMapping("/verify/{token}")
-    public Mono<String> verifyToken(@PathVariable String token){
-        return Mono.just(publicApiService.verifyToken(token));
+    public Mono<String> verifyToken(@PathVariable String token,Model model){
+        return Mono.just(publicApiService.verifyToken(token,model));
     }
 
 }

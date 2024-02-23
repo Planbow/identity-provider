@@ -48,9 +48,10 @@
             <tr style="height: 0;">
                 <td>
                     <img
-                            alt=""
-                            src="https://dev.planbow.com/img/logo_white.png"
-                            height="30px"
+                            style="display: block"
+                            src="https://dev.idp.planbow.com/img/logo_white.png"
+                            height="40"
+                            width="150"
                     />
                 </td>
                 <td style="text-align: right;">

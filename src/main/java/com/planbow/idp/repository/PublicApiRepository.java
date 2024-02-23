@@ -140,7 +140,7 @@ public class PublicApiRepository extends HibernateRepository {
     }
 
     public TokenVerificationEntity addTokenVerificationEntity(TokenVerificationEntity tokenVerificationEntity) {
-        //saveOrUpdateEntity(tokenVerificationEntity);
+        saveOrUpdateEntity(tokenVerificationEntity);
         return tokenVerificationEntity;
     }
 
