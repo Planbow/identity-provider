@@ -39,8 +39,8 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         OAuth2User oAuth2User =  super.loadUser(userRequest);
-        CustomOAuth2User user=new CustomOAuth2User(oAuth2User);
-        /*String domain = user.getEmail().substring(user.getEmail().lastIndexOf("@")+1);
+       /* CustomOAuth2User user=new CustomOAuth2User(oAuth2User);
+        String domain = user.getEmail().substring(user.getEmail().lastIndexOf("@")+1);
         Optional<AuthorizedDomainEntity> authorizedDomainEntity = planbowIdentityRepository.getAuthorizedDomainEntity(domain);
         if(authorizedDomainEntity.isEmpty()){
             throw new OAuth2AuthenticationException("Unauthorized Domain");

@@ -31,7 +31,8 @@ public class PlanbowIdentityRepository /*extends HibernateRepository*/ {
         Root<UserEntity> userEntityRoot= userEntityCriteriaQuery.from(UserEntity.class);
         userEntityCriteriaQuery.select(userEntityRoot).distinct(true);
         userEntityCriteriaQuery.where(
-                criteriaBuilder.equal(userEntityRoot.get("email"),email));
+                criteriaBuilder.equal(userEntityRoot.get("email"),email),
+                criteriaBuilder.equal(userEntityRoot.get("active"),true));
         List<UserEntity> userEntities= entityManager.createQuery( userEntityCriteriaQuery )
                 .getResultList();
         if(userEntities!=null && !userEntities.isEmpty()){
