@@ -109,6 +109,8 @@ public class PublicApiService {
                 userEntity.setIsAccountVerified(true);
                 userEntity.setIsActive(true);
                 userEntity.setAttempts(0);
+                UserEntity finalUserEntity1 = userEntity;
+                new Thread(()-> welcomeEmail(finalUserEntity1)).start();
             }
             userEntity.setModifiedOn(Utility.getCustomTimestamp());
             Set<RolesEntity> rolesEntities  = userEntity.getRolesEntity();
@@ -181,6 +183,30 @@ public class PublicApiService {
             log.info("Sending greeting email to user");
         }
     }
+    @Async("asyncExecutor")
+    public void welcomeEmail(UserEntity userEntity) {
+        log.info("Executing welcomeEmail() method");
+        configuration.setClassForTemplateLoading(this.getClass(), "/templates/");
+        Map<String, Object> model = new HashMap<>();
+        model.put("name", userEntity.getName());
+        model.put("verifyUrl", System.getenv("WEBSITE.URL"));
+        model.put("date", PlanbowUtility.formatDate(new Date()));
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
+        Template t = null;
+        try {
+            t = configuration.getTemplate("welcome.ftl");
+            String text = FreeMarkerTemplateUtils.processTemplateIntoString(t, model);
+
+            helper.setTo(userEntity.getEmail());
+            helper.setFrom("no-reply@planbow.com");
+            helper.setSubject("Welcome to Planbow");
+            helper.setText(text, true);
+            javaMailSender.send(message);
+        } catch (TemplateException | MessagingException | IOException e) {
+            log.error("exception {}",e.getMessage());
+        }
+    }
 
     public String verifyToken(String token, Model model) {
         TokenVerificationEntity tokenVerificationEntity = publicApiRepository.getTokenVerificationEntity(token);
@@ -197,6 +223,7 @@ public class PublicApiService {
                     model.addAttribute("content","Your account is already verified , start exploring planbow features");
                     return "alreadyVerified";
                 } else {
+                    new Thread(()-> welcomeEmail(userEntity)).start();
                     model.addAttribute("content","Your account is now verified , start exploring planbow features");
                     userEntity.setIsActive(true);
                     userEntity.setIsAccountVerified(true);
