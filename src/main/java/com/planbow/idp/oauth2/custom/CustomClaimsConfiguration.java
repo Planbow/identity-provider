@@ -24,7 +24,7 @@ public class CustomClaimsConfiguration {
     @Bean
     public OAuth2TokenCustomizer<JwtEncodingContext> jwtTokenCustomizer() {
         return (context) -> {
-            if (OAuth2TokenType.ACCESS_TOKEN.equals(context.getTokenType())) {
+            if (OAuth2TokenType.ACCESS_TOKEN.equals(context.getTokenType()) || OAuth2TokenType.REFRESH_TOKEN.equals(context.getTokenType()) ) {
                 Optional<UserEntity> userEntityOptional = planbowIdentityRepository.getUserEntity(context.getAuthorization().getPrincipalName());
                 userEntityOptional.ifPresent(userEntity -> context.getClaims().claims((claims) -> {
                     claims.put("userId", userEntity.getId());
